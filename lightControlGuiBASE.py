@@ -10,6 +10,8 @@ Config.set('graphics', 'fullscreen', 'auto')
 from phue import Bridge
 
 b = Bridge('192.168.1.188')
+b.connect()
+b.set_light(1,'on', True)
 
 class MyGrid(GridLayout):
     bright = 254

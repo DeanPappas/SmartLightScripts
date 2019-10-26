@@ -8,8 +8,8 @@
     name: "first_screen"
     GridLayout:
         rows: 3
-        padding: 1
-        spacing: 1
+        padding: 0
+        spacing: 0
         BoxLayout:
             size_hint_y: None
             height: 100
@@ -31,42 +31,44 @@
                     app.root.transition.duration = .7
                     app.root.current = 'third_screen'
         BoxLayout:
-            spacing: 1
+            spacing: 0
             Button:
                 background_color: (0, 0, 2, 2)
                 text:''
                 on_press:
-                    b.set_light(1,'xy', (.01,.01))
+                    root.blue()
                     print('Blue')
             Button:
                 background_color: (2, 0, 0, 2)
                 text:''
                 on_press:
-                    #b.set_light(1,'xy', (1,.5))
+                    root.red()
                     print('Red')
             Button:
                 font_size: 50
                 text:'+'
                 on_press:
+					root.addBri()
                     print('Add Brightness')
         BoxLayout:
-            spacing: 1
+            spacing: 0
             Button:
                 background_color: (0, 2, 0, 2)
                 text:''
                 on_press:
-                    #b.set_light(1,'xy', (.5,1))
+                    root.green()
                     print('Green')
             Button:
                 background_color: (2, 2, 0, 1)
                 text:''
                 on_press:
-                    #b.set_light(1,'xy', (.5,.5))
+                    root.yellow()
                     print('Yellow')
             Button:
                 font_size: 50
                 text:'-'
                 on_press:
+					root.subBri()
                     print('Subtract Brightness')
 
 <SecondScreen>:
@@ -99,29 +101,41 @@
             Button:
                 background_color: (.5, 1, .8, 1)
                 text:''
-                on_press: print(app.root)
+				on_press: 
+					root.teal()
+					print('teal')
             Button:
                 background_color: (4, .5, .2, 1)
                 text:''
-                on_press: print('Button X')
+                on_press: 
+					root.orange()
+					print('orange')
             Button:
                 font_size: 50
                 text:'+'
-                on_press: print('placeholder')
+                on_press: 
+					root.addBri()
+					print('addBri')
         BoxLayout:
             spacing: 0
             Button:
                 background_color: (1, 0, 1, 1)
                 text:''
-                on_press: print(app.root)
+                on_press: 
+					root.violet()
+					print('violet')
             Button:
                 background_color: (3, 2, 2, 1)
                 text:''
-                on_press: print('Button X')
+                on_press: 
+					root.pink()
+					print('pink')
             Button:
                 font_size: 50
                 text:'-'
-                on_press: print('tasklj')
+                on_press:
+					subBri()
+					print('subBri')
                 
 <ThirdScreen>:
     name: "third_screen"
