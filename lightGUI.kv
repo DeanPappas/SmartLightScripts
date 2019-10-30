@@ -3,6 +3,7 @@
     FirstScreen:
     SecondScreen:
     ThirdScreen:
+	FourthScreen:
 
 <FirstScreen>:
     name: "first_screen"
@@ -15,21 +16,79 @@
             height: 100
             spacing: 0
             Button:
-                text:'RGBY'
+                text:'I/O'
                 on_press: 
                     app.root.current = 'first_screen'
             Button:
-                text:'TOVP'
+                text:'RGBY'
                 on_press: 
                     app.root.transition.direction = 'left'
                     app.root.transition.duration = .7
                     app.root.current = 'second_screen'
             Button:
-                text:'BWG'
+                text:'TOPV'
                 on_press: 
                     app.root.transition.direction = 'left'
                     app.root.transition.duration = .7
                     app.root.current = 'third_screen'
+			Button:
+				text:'PLACEHOLDER'
+				on_press:
+					app.root.transition.direction = 'left'
+					app.root.transition.duration = .7
+					app.root.current = 'fourth_screen'
+					
+        BoxLayout:
+            spacing: 0
+            Button:
+				font_size: 100
+                text:'I'
+                on_press:
+                    root.powerOn()
+                    print('On')
+            Button:
+				font_size: 100
+                text:'O'
+                on_press:
+                    root.powerOff()
+                    print('Off')
+           
+					
+<SecondScreen>:
+    name: "second_screen"
+    GridLayout:
+        rows: 3
+        padding: 0
+        spacing: 0
+		
+        BoxLayout:
+            size_hint_y: None
+            height: 100
+            spacing: 0
+            Button:
+                text:'I/O'
+                on_press:
+					app.root.transition.direction = 'right'
+                    app.root.transition.duration = .7
+                    app.root.current = 'first_screen'
+					
+            Button:
+                text:'RGBY'
+                on_press: 
+                    app.root.current = 'second_screen'
+            Button:
+                text:'TOPV'
+                on_press: 
+                    app.root.transition.direction = 'left'
+                    app.root.transition.duration = .7
+                    app.root.current = 'third_screen'
+			Button:
+				text:'PLACEHOLDER'
+				on_press:
+					app.root.transition.direction = 'left'
+					app.root.transition.duration = .7
+					app.root.current = 'fourth_screen'
+					
         BoxLayout:
             spacing: 0
             Button:
@@ -50,6 +109,7 @@
                 on_press:
 					root.addBri()
                     print('Add Brightness')
+					
         BoxLayout:
             spacing: 0
             Button:
@@ -71,31 +131,41 @@
 					root.subBri()
                     print('Subtract Brightness')
 
-<SecondScreen>:
-    name: "second_screen"
+<ThirdScreen>:
+    name: "third_screen"
     GridLayout:
         rows: 3
         padding: 0
         spacing: 0
+		
         BoxLayout:
             size_hint_y: None
             height: 100
             spacing: 0
             Button:
-                text:'RGBY'
-                on_press: 
-                    app.root.transition.direction = 'right'
+                text:'I/O'
+                on_press:
+					app.root.transition.direction = 'right'
                     app.root.transition.duration = .7
                     app.root.current = 'first_screen'
+					
             Button:
-                text:'TOVP'
-                on_press: app.root.current = 'second_screen'
-            Button:
-                text:'BWG'
+                text:'RGBY'
                 on_press: 
-                    app.root.transition.direction = 'left'
+					app.root.transition.direction = 'right'
                     app.root.transition.duration = .7
+                    app.root.current = 'second_screen'
+            Button:
+                text:'TOPV'
+                on_press: 
                     app.root.current = 'third_screen'
+			Button:
+				text:'PLACEHOLDER'
+				on_press:
+					app.root.transition.direction = 'left'
+					app.root.transition.duration = .7
+					app.root.current = 'fourth_screen'
+					
         BoxLayout:
             spacing: 0
             Button:
@@ -115,7 +185,8 @@
                 text:'+'
                 on_press: 
 					root.addBri()
-					print('addBri')
+                    print('Add Brightness')
+					
         BoxLayout:
             spacing: 0
             Button:
@@ -134,34 +205,44 @@
                 font_size: 50
                 text:'-'
                 on_press:
-					subBri()
-					print('subBri')
+					root.subBri()
+                    print('Subtract Brightness')
                 
-<ThirdScreen>:
-    name: "third_screen"
+<FourthScreen>:
+    name: "fourth_screen"
     GridLayout:
         rows: 3
         padding: 0
         spacing: 0
+		
         BoxLayout:
             size_hint_y: None
             height: 100
             spacing: 0
             Button:
-                text:'RGBY'
-                on_press: 
-                    app.root.transition.direction = 'right'
+                text:'I/O'
+                on_press:
+					app.root.transition.direction = 'right'
                     app.root.transition.duration = .7
                     app.root.current = 'first_screen'
+					
             Button:
-                text:'TOVP'
+                text:'RGBY'
                 on_press: 
-                    app.root.transition.direction = 'right'
+					app.root.transition.direction = 'right'
                     app.root.transition.duration = .7
                     app.root.current = 'second_screen'
             Button:
-                text:'BWG'
-                on_press: app.root.current = 'third_screen'
+                text:'TOPV'
+                on_press: 
+                    app.root.current = 'third_screen'
+			Button:
+				text:'PLACEHOLDER'
+				on_press:
+					app.root.transition.direction = 'right'
+                    app.root.transition.duration = .7
+					app.root.current = 'fourth_screen'
+				
         BoxLayout:
             spacing: 0
             Button:
@@ -175,7 +256,10 @@
             Button:
                 font_size: 50
                 text:'+'
-                on_press: print('placeholder')
+                on_press:
+					root.addBri()
+                    print('Add Brightness')
+					
         BoxLayout:
             spacing: 0
             Button:
@@ -189,4 +273,6 @@
             Button:
                 font_size: 50
                 text:'-'
-                on_press: print('tasklj')
+                on_press:
+					root.subBri()
+                    print('Subtract Brightness')

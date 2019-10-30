@@ -2,6 +2,7 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.config import Config
+from kivy.properties import ObjectProperty
 Config.set('graphics', 'fullscreen', 'auto')
 from phue import Bridge
 
@@ -15,7 +16,17 @@ class MainScreen(ScreenManager):
         super(MainScreen, self).__init__()
 
 class FirstScreen(Screen):
-    bright = 100
+    
+    def powerOn(self):
+        b.set_light(1,'on', True)
+    
+    def powerOff(self):
+        b.set_light(1,'on', False)
+
+class SecondScreen(Screen):
+
+    bri = b.get_light(1,'bri')
+    
     def blue(self):
         b.set_light(1,'xy', (.01,.01))
 
@@ -29,15 +40,29 @@ class FirstScreen(Screen):
         b.set_light(1,'xy', (.5,.5))
 
     def addBri(self):
-        bright = bright + 20
-        b.set_light(1, 'bri', bright)
+        if(self.bri > 240):
+            print(self.bri)
+            self.bri = 254
+            b.set_light(1,'bri',self.bri)
+        else:
+            print(self.bri)
+            self.bri = self.bri + 20
+            b.set_light(1, 'bri', self.bri)
 
     def subBri(self):
-        bright = bright - 20
-        b.set_light(1, 'bri', bright)
+        if(self.bri < 20):
+            print(self.bri)
+            self.bri = 1
+            b.set_light(1,'bri',self.bri)
+        else:
+            print(self.bri)
+            self.bri = self.bri - 20
+            b.set_light(1, 'bri', self.bri)
 
-class SecondScreen(Screen):
-    bright = 100
+class ThirdScreen(Screen):
+
+    bri = b.get_light(1,'bri')
+    
     def teal(self):
         b.set_light(1,'xy', (.25,.45))
 
@@ -51,15 +76,29 @@ class SecondScreen(Screen):
         b.set_light(1,'xy', (.45,.22))
 
     def addBri(self):
-        bright = bright + 20
-        b.set_light(1, 'bri', bright)
+        if(self.bri > 240):
+            print(self.bri)
+            self.bri = 254
+            b.set_light(1,'bri',self.bri)
+        else:
+            print(self.bri)
+            self.bri = self.bri + 20
+            b.set_light(1, 'bri', self.bri)
 
     def subBri(self):
-        bright = bright - 20
-        b.set_light(1, 'bri', bright)
+        if(self.bri < 20):
+            print(self.bri)
+            self.bri = 1
+            b.set_light(1,'bri',self.bri)
+        else:
+            print(self.bri)
+            self.bri = self.bri - 20
+            b.set_light(1, 'bri', self.bri)
 
-class ThirdScreen(Screen):
-    bright = 100
+class FourthScreen(Screen):
+    
+    bri = b.get_light(1,'bri')
+   
     def blue(self):
         b.set_light(1,'xy', (.01,.01))
 
@@ -73,12 +112,24 @@ class ThirdScreen(Screen):
         b.set_light(1,'xy', (.5,.5))
 
     def addBri(self):
-        bright = bright + 20
-        b.set_light(1, 'bri', bright)
+        if(self.bri > 240):
+            print(self.bri)
+            self.bri = 254
+            b.set_light(1,'bri',self.bri)
+        else:
+            print(self.bri)
+            self.bri = self.bri + 20
+            b.set_light(1, 'bri', self.bri)
 
     def subBri(self):
-        bright = bright - 20
-        b.set_light(1, 'bri', bright)
+        if(self.bri < 20):
+            print(self.bri)
+            self.bri = 1
+            b.set_light(1,'bri',self.bri)
+        else:
+            print(self.bri)
+            self.bri = self.bri - 20
+            b.set_light(1, 'bri', self.bri)
 
 class MyApp(App):
     def build(self):
