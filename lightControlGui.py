@@ -67,13 +67,13 @@ class ThirdScreen(Screen):
         b.set_light(1,'xy', (.25,.45))
 
     def orange(self):
-        b.set_light(1,'xy', (.6,.5))
+        b.set_light(1,'xy', (0.614, 0.3783))
 
     def violet(self):
         b.set_light(1,'xy', (.3,.1))
 
     def pink(self):
-        b.set_light(1,'xy', (.45,.22))
+        b.set_light(1,'xy', (0.3971, 0.225))
 
     def addBri(self):
         if(self.bri > 240):
