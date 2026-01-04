@@ -1,6 +1,6 @@
 from phue import Bridge
 
-b = Bridge('192.168.1.188')
+b = Bridge('')
 
 lights = b.get_light_objects()
 

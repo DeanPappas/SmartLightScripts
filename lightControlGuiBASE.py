@@ -9,7 +9,7 @@ from kivy.config import Config
 Config.set('graphics', 'fullscreen', 'auto')
 from phue import Bridge
 
-b = Bridge('192.168.1.188')
+b = Bridge('')
 b.connect()
 b.set_light(1,'on', True)
 
