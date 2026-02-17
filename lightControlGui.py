@@ -16,10 +16,12 @@ hub_ip = data[0]["internalipaddress"]
 # Set IP from Philips Hue Bridge
 b = Bridge(hub_ip)
 # Set light names from Hue App
-light1 = "Desk Light"
-light2 = "Corner Light"
 b.connect()
-
+lights = []
+for light in b.get_api()['lights']:
+    lights.append(b.get_api()['lights'][light]['name'])
+light1 = lights[0]
+light2 = lights[1]
 kv_text = Builder.load_file("lightGUI.kv")
 
 
