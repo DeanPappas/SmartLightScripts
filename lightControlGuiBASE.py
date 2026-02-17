@@ -1,15 +1,19 @@
 #https://kivy.org/#home to install kivy
-import kivy
+import requests
 from kivy.app import App
-from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.config import Config
 Config.set('graphics', 'fullscreen', 'auto')
 from phue import Bridge
 
-b = Bridge('')
+response = requests.get("https://discovery.meethue.com/")
+response.raise_for_status()
+data = response.json()
+
+hub_ip = data[0]["internalipaddress"]
+
+b = Bridge(hub_ip)
 b.connect()
 b.set_light(1,'on', True)
 
